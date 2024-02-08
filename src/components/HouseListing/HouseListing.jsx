@@ -3,8 +3,32 @@ import GetHouses from "../../services/GetHouses"
 import HouseCard from "../HouseCard/HouseCard"
 import './HouseListing.css'
 
-export default function HouseListing(){
-    const houses = GetHouses() 
+export default function HouseListing({data}){
+
+    
+    console.log("HouseListing")
+
+    console.log(data)
+    const housesReturned = GetHouses()
+    let houses = []
+
+    if(data.length === 0) {
+        houses = housesReturned  
+    } else {
+        data.map(filter => {
+            console.log(filter)
+            const filteredHouse = housesReturned.filter( house => house.location == filter )  
+            filteredHouse.map(filtHouse =>  houses.push(filtHouse))
+            }
+        )
+    }
+
+    // if(data == "") {
+    //     houses = GetHouses() 
+    // } else {
+    //     houses = GetHouses().filter( house => house.location == data ) 
+    // }
+
     console.log("houses " + houses)
 
 

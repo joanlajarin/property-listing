@@ -9,6 +9,14 @@ export default function HouseCard(props) {
     return (
         <div key={house.id} className="house-card">
             <div className="image-container">
+                {
+                    house.superhost && (
+                        <div className="div-superhost">
+                            <span className="name-superhost">Superhost</span>
+                            <img className="img-superhost" src={star}></img>
+                        </div>
+                    )       
+                }
                 <img className="img-house-card" src={house.image}></img>
             </div>
             <div className="info-house-card">
@@ -27,12 +35,12 @@ export default function HouseCard(props) {
                 <div className="price-stars-house-card">
                     <div className="price-house-card">
                         <span>${house.price}</span>
-                        <span>/night</span>             
+                        <span className="night-house-card">/night</span>             
 
                     </div>
                     <div className="stars-house-card">
                         <img src={star}></img>
-                        <span>{house.rating}</span>             
+                        <span className="rating-house-card">{house.rating}</span>             
                     </div>
                 </div>
             </div>
