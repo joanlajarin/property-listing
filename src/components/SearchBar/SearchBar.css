@@ -1,0 +1,26 @@
+.searchbar {
+    background-color: #20293A;
+    display: flex;
+    padding: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+}
+.filters-searchbar{
+    display: flex;
+    gap: 12px;
+}
+.btn-filter{
+    font-size: 16px;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.btn-filter:hover{
+    background-color: #97A3B6;
+    border-radius: 10px;
+}
+.btn-filter:focus, .btn-filter:active {
+    background-color: #97A3B6;
+    border-radius: 10px;
+}
