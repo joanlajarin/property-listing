@@ -13,17 +13,16 @@ export default function SearchBar(){
                 <a className="btn-filter">Switzerland</a>
             </div>
             <div className="other-filters">
-                <div>
-
+                <div className="superhost">
+                    <button>o</button> <label>Superhost</label>
                 </div>
-                <div>
-                    Property type
+                <div className="property-type-div">
                     <label for="property-type">Property type</label>
                     <select name="property-type" id="property-type-emnu">
-                        <option value="volvo">A</option>
-                        <option value="saab">B</option>
-                        <option value="opel">C</option>
-                        <option value="audi">D</option>
+                        <option value="a"></option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                        <option value="d">D</option>
                     </select>
                 </div>
             </div>

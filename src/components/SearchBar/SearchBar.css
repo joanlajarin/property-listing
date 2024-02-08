@@ -1,10 +1,17 @@
 .searchbar {
+    position: absolute;
     background-color: #20293A;
+    width: 100%;
+    max-width: 1136px;
     display: flex;
     padding: 32px;
     padding-left: 40px;
     padding-right: 40px;
-
+    border-radius: 15px;
+    justify-content: space-between;
+    align-items: center;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .filters-searchbar{
     display: flex;
@@ -22,5 +29,20 @@
 }
 .btn-filter:focus, .btn-filter:active {
     background-color: #97A3B6;
+    border-radius: 10px;
+}
+.superhost {
+    display: flex;
+    gap: 8px;
+}
+.other-filters{
+    display: flex;
+    gap: 24px;
+}
+.property-type-div{
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: 2px solid #97A3B6;
     border-radius: 10px;
 }
