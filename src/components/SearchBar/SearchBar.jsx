@@ -17,7 +17,7 @@ export default function SearchBar(){
                     <button>o</button> <label>Superhost</label>
                 </div>
                 <div className="property-type-div">
-                    <label for="property-type">Property type</label>
+                    <label>Property type</label>
                     <select name="property-type" id="property-type-emnu">
                         <option value="a"></option>
                         <option value="b">B</option>
