@@ -125,5 +125,5 @@ input:checked + .slider:before {
     color: #F2F9FE;
     font-size: 14px;
     font-family: "Outfit", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+    
 }
