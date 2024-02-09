@@ -62,14 +62,18 @@ export default function SearchBar({onSearch}){
             </div>
             <div className="other-filters">
                 <div className="superhost">
-                    <button>o</button> <label>Superhost</label>
+                    <label className="switch">
+                        <input type="checkbox"></input>
+                        <span className="slider round"></span>
+                    </label>
+                    <span className="span-superhost">Superhost</span>
                 </div>
+
                 <div className="property-type-div">
-                    <label>Property type</label>
-                    <select name="property-type" id="property-type-emnu">
-                        <option value="a"></option>
-                        <option value="1-bedroom">1 bedroom</option>
-                        <option value="2-bedroom">2 bedroom</option>
+                    <select className="option-property-type" name="property-type" id="property-type-value">
+                        <option className="option-property-type" value="all-bedroom">Property type</option>
+                        <option className="option-property-type"  value="1-bedroom">Property type 1</option>
+                        <option className="option-property-type"  value="2-bedroom">Property type 2</option>
                     </select>
                 </div>
             </div>
