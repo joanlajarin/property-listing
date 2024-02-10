@@ -5,7 +5,12 @@ import { useState, useEffect } from "react"
 
 export default function SearchBar({onSearch}){
 
-    const [filters, setFilters] = useState([])
+    const [filters, setFilters] = useState({
+        "locations": [],
+        "superhost": false,
+        'bedrooms': 'all'
+    }
+)
 
 
     useEffect(() => {
@@ -13,14 +18,19 @@ export default function SearchBar({onSearch}){
 
             const filter = filterEl.srcElement.innerHTML
             filterEl.target.classList.toggle('active')
+
             if(filter != "All Stays") {
            //     console.log(aFilters[0].classList.toggle('active'))
                 aFilters[0].classList.remove('active')
                 setFilters(prevFilters => {
-                    if (prevFilters.includes(filter)) {
-                      return prevFilters.filter(item => item !== filter);
+
+                    let locations = prevFilters.locations
+                    if (locations.includes(filter)) {
+                      locations = locations.filter(item => item !== filter)
+                      return {...prevFilters, locations: locations}  
                     } else {
-                      return [...prevFilters, filter];
+                    locations.push(filter)
+                      return {...prevFilters, locations: locations} 
                     }
                   })
             } else {
@@ -29,13 +39,45 @@ export default function SearchBar({onSearch}){
                 for(let i = 1; i < aFilters.length;i++ ){
                     aFilters[i].classList.remove('active')
                 }
-                setFilters([]);
+                setFilters(prevFilters => {
+                   return {...prevFilters, locations: []} 
+                })
             }
         }
+
         const aFilters = document.querySelectorAll(".btn-filter")
         aFilters.forEach(filterEl => {
             filterEl.addEventListener("click",handleClick)
         })
+
+
+        const propertyBedrooms = document.getElementById("property-type-value")
+        
+        propertyBedrooms.addEventListener("change",changePropertyBedrooms )
+
+        function changePropertyBedrooms() {
+            let numBedrooms = propertyBedrooms.options[propertyBedrooms.selectedIndex].value
+            setFilters(prevFilters => {
+                return {...prevFilters, bedrooms: numBedrooms }
+            })
+        }
+
+
+        const checkSuperhost = document.querySelector('.input-superbox');
+
+        checkSuperhost.addEventListener("change", checkFilterSuperhost)
+
+        function checkFilterSuperhost() {
+            if(this.checked) {
+                setFilters(prevFilters => {
+                    return {...prevFilters, superhost: true}
+                })
+            } else {
+                setFilters(prevFilters => {
+                    return {...prevFilters, superhost: false}
+                })
+            }
+        }
         },[])
 
 
@@ -63,7 +105,7 @@ export default function SearchBar({onSearch}){
             <div className="other-filters">
                 <div className="superhost">
                     <label className="switch">
-                        <input type="checkbox"></input>
+                        <input className="input-superbox" type="checkbox"></input>
                         <span className="slider round"></span>
                     </label>
                     <span className="span-superhost">Superhost</span>
@@ -71,9 +113,9 @@ export default function SearchBar({onSearch}){
 
                 <div className="property-type-div">
                     <select className="option-property-type" name="property-type" id="property-type-value">
-                        <option className="option-property-type" value="all-bedroom">Property type</option>
-                        <option className="option-property-type"  value="1-bedroom">Property type 1</option>
-                        <option className="option-property-type"  value="2-bedroom">Property type 2</option>
+                        <option className="option-property-type" value="all">Property type</option>
+                        <option className="option-property-type"  value="1">Property type 1</option>
+                        <option className="option-property-type"  value="2">Property type 2</option>
                     </select>
                 </div>
             </div>

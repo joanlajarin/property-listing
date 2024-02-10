@@ -3,34 +3,30 @@ import GetHouses from "../../services/GetHouses"
 import HouseCard from "../HouseCard/HouseCard"
 import './HouseListing.css'
 
-export default function HouseListing({data}){
+export default function HouseListing({data = { "locations": [], "superhost": false,'bedrooms': 'all'}}){
 
-    
-    console.log("HouseListing")
-
-    console.log(data)
     const housesReturned = GetHouses()
+   
     let houses = []
 
-    if(data.length === 0) {
-        houses = housesReturned  
-    } else {
-        data.map(filter => {
-            console.log(filter)
-            const filteredHouse = housesReturned.filter( house => house.location == filter )  
-            filteredHouse.map(filtHouse =>  houses.push(filtHouse))
-            }
-        )
+    if(data != "") {
+        if(data.locations.length != 0 ){
+            houses = []
+            data.locations.map(filter => {
+                console.log(filter)
+                housesReturned.filter( house => house.location == filter ).map(house => houses.push(house))  
+                }) 
+        } else {
+            houses = housesReturned
+        }
+
+        if(data.bedrooms != 'all'){
+            houses = houses.filter( house => house.capacity.bedroom == data.bedrooms )
+        } 
+        if(data.superhost != false) {
+            houses = houses.filter( house => house.superhost == true )
+         }    
     }
-
-    // if(data == "") {
-    //     houses = GetHouses() 
-    // } else {
-    //     houses = GetHouses().filter( house => house.location == data ) 
-    // }
-
-    console.log("houses " + houses)
-
 
     return (
         <section className="main-house-listing">
