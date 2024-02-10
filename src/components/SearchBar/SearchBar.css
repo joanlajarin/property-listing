@@ -127,3 +127,10 @@ input:checked + .slider:before {
     font-family: "Outfit", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     
 }
+
+@media screen and (max-width: 641px) {
+  .searchbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
